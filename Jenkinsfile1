@@ -32,7 +32,7 @@ pipeline {
     }
     
     post {
-        succes {
+        success {
             echo 'El proyecto ha completado todas las etapas correctamente'
         }
         failure {
