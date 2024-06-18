@@ -25,6 +25,12 @@ pipeline {
             post {
                 success {
                     archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+                    /*
+                    Esta parte indica a Jenkins que debe buscar todos los archivos con extensión .jar 
+                    dentro del directorio target del proyecto después de la construcción.
+                    Los archivos .jar generalmente son los artefactos resultantes de un proyecto Java después de la 
+                    compilación y empaquetado con Maven o cualquier otra herramienta de construcción.
+                    */
                 }
             }    
         }
