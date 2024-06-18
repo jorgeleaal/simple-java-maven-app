@@ -4,6 +4,9 @@ pipeline {
     tools {
         maven 'mavenjenkins'
     }
+    options {
+        timestamps()
+    }
     
     stages {
         stage('Build') {
@@ -25,6 +28,15 @@ pipeline {
             steps {
                 sh './jenkins/scripts/deliver.sh'
             }
+        }
+    }
+    
+    post {
+        succes {
+            echo 'El proyecto ha completado todas las etapas correctamente'
+        }
+        failure {
+            echo 'El proyecto NO ha completado todas las etapas correctamente'
         }
     }
 }
