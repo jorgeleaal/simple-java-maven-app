@@ -15,7 +15,8 @@ pipeline {
                 timeout(time: 2, unit: "MINUTES")
             }
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                sh 'mvn -version'
+                sh 'mvn clean package'
             }
         }
         stage('Test') {
@@ -36,6 +37,10 @@ pipeline {
     }
     
     post {
+        always {
+            cleanWs()
+            //Para que el pipline empiece siempre con un nuevo workspace
+        }
         success {
             echo 'El proyecto ha completado todas las etapas correctamente'
         }
